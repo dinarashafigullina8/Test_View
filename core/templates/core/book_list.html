@@ -16,7 +16,7 @@
   {% for book in object_list %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
-      <td> <a href="{% url 'core:book_detail' book.pk %}" > {{ book.name }} </a> </td>
+      <td> <a href="{% url 'core:book_detail' book.pk %}" > {{ book.name| capfirst }} </a> </td>
       <td>{{ book.pages|add:"5"|default:'-' }}</td>
     </tr>
   {% empty %}
