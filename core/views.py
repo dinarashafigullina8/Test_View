@@ -16,7 +16,8 @@ class TitleMixin:
         context['title'] = self.get_title()
         return context
 
-class IndexView(TitleMixin,TemplateView):
+
+class IndexView(TitleMixin, TemplateView):
     template_name = 'core/index.html'
     title = 'Главная страница'
 
@@ -29,10 +30,9 @@ class IndexView(TitleMixin,TemplateView):
         return 'Главная страница'
 
 
-
-
-class Books(ListView):
+class Books(TitleMixin, ListView):
     title = 'Книги'
+
     def get_queryset(self):
         name = self.request.GET.get('name')
         queryset = core.models.Book.objects.all()
@@ -41,8 +41,7 @@ class Books(ListView):
         return queryset
 
 
-
-class BookDetail(TitleMixin,DetailView):
+class BookDetail(TitleMixin, DetailView):
     queryset = core.models.Book.objects.all()
 
     def get_title(self):
