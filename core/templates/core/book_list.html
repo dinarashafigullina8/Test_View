@@ -17,8 +17,10 @@
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
       <td> <a href="{% url 'core:book_detail' book.pk %}" > {{ book.name }} </a> </td>
-      <td>{{ book.pages| default:'-' }}</td>
+      <td>{{ book.pages|add:"5"|default:'-' }}</td>
     </tr>
+  {% empty %}
+    <h4> Не найдено </h4>
   {% endfor %}
 
 </table>
