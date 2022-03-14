@@ -37,7 +37,7 @@
 </nav>
    {% block title %}
     {% if title %}
-      <h3> {{ title }}</h3>
+      <h3> {{ title| capfirst }}</h3>
     {% endif %}
    {% endblock %}
 

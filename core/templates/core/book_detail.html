@@ -1,1 +1,7 @@
 {% extends 'core/index.html' %}
+{% block content %}
+<div class="alert alert-primary" role="alert">
+  Количество страниц
+    <td>{{ book.pages|add:"5"|default:'Неизвестно' }}</td>
+</div>
+{% endblock %}
