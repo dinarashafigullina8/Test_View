@@ -28,13 +28,11 @@ class IndexView(TitleMixin,TemplateView):
     def get_info(self):
         return 'Главная страница'
 
-#def index(request):
- #   return render(request, 'core/index.html')
+
 
 
 class Books(ListView):
     def get_queryset(self):
-        queryset = super().get_queryset()
         name = self.request.GET.get('name')
         queryset = core.models.Book.objects.all()
         if name:
@@ -42,15 +40,14 @@ class Books(ListView):
         return queryset
 
 
-# def book_list(request):
-#     name = request.GET.get('name')
-#     books = core.models.Book.objects.all()
-#     if name:
-#         books = books.filter(name__icontains=name)
-#     return render(request, 'core/book_list.html', {'books': books})
 
 class BookDetail(DetailView):
     queryset = core.models.Book.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['title'] = str(self.get_object())
+        return context
 
 
 def book_detail(request, pk):

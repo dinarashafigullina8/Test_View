@@ -35,9 +35,16 @@
     </div>
   </div>
 </nav>
+   {% block title %}
+    {% if title %}
+      <h3> {{ title }}</h3>
+    {% endif %}
+   {% endblock %}
 
+   {% block content %}
 
-{{ info }}
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
+   {% endblock %}
+
+   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
   </body>
 </html>
