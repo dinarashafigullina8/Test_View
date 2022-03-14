@@ -6,7 +6,7 @@ import core.models
 
 
 class TitleMixin:
-    title = None
+    title: str = None
 
     def get_title(self):
         return self.title
@@ -32,6 +32,7 @@ class IndexView(TitleMixin,TemplateView):
 
 
 class Books(ListView):
+    title = 'Книги'
     def get_queryset(self):
         name = self.request.GET.get('name')
         queryset = core.models.Book.objects.all()
@@ -41,13 +42,11 @@ class Books(ListView):
 
 
 
-class BookDetail(DetailView):
+class BookDetail(TitleMixin,DetailView):
     queryset = core.models.Book.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['title'] = str(self.get_object())
-        return context
+    def get_title(self):
+        return str(self.get_object())
 
 
 def book_detail(request, pk):
