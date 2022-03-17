@@ -1,1 +1,2 @@
 django==4.0.3
+django_bootstrap-v5==1.0.11
