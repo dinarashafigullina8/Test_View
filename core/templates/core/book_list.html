@@ -23,9 +23,9 @@
     <h4> Не найдено </h4>
   {% endfor %}
 
-</table>
+       </tbody>
+    </table>
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js" ></script>
-  </body>
-</html>
+    <a href="{% url 'core:book_create' %}" class="btn btn-success"> Добавить книгу</a>
+
 {% endblock %}

@@ -1,11 +1,10 @@
-from django_filters import filters
+import django_filters
 
 import core.models
 
 
-class BookFilter(filters.Filter):
-    name = filters.Filter()
-
+class BookFilter(django_filters.FilterSet):
+    name = django_filters.Filter(lookup_expr='icontains', label='Название')
     class Meta:
         model = core.models.Book
-        fields = ('name')
+        fields = '__all__'
